@@ -74,4 +74,21 @@
   }
 
   // Your custom JavaScript goes here
+
+    /**
+     * TASK 1
+     */
+    function cloneBaconImg() {
+        const bacon = document.getElementById('bacon-list')
+                            .getElementsByClassName('bacon-part')[0];
+        const cloning = bacon.cloneNode(true);
+        document.getElementById('bacon-list').appendChild(cloning);
+    }
+    /**
+     * TASK 1 init
+     */
+    document.getElementById('clone-bacon').onclick = function() {
+        cloneBaconImg();
+    };
 })();
+
