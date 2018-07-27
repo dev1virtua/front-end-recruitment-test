@@ -79,16 +79,18 @@
      * TASK 1
      */
     function cloneBaconImg() {
-        const bacon = document.getElementById('bacon-list')
-                            .getElementsByClassName('bacon-part')[0];
+        const bacon = document.querySelector('.bacon-part');
+        const containerBacon = document.getElementById('bacon-list');
         const cloning = bacon.cloneNode(true);
-        document.getElementById('bacon-list').appendChild(cloning);
+        containerBacon.appendChild(cloning);
     }
     /**
      * TASK 1 init
      */
-    document.getElementById('clone-bacon').onclick = function() {
-        cloneBaconImg();
-    };
+    if (document.getElementById('clone-bacon')) {
+        document.getElementById('clone-bacon').onclick = function() {
+            cloneBaconImg();
+        };
+    }
 })();
 
