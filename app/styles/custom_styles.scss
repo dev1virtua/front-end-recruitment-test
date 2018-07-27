@@ -9,7 +9,7 @@ $txt-inpt:              #b3b3ab;
 
 $cta-success:           #6bd400;
 $cta-success-dark:      #5db603;
-
+$cta-alert:             #d4130f;
 
 // -- Layouts
 $bck-light:             #f2f2f2;
@@ -228,6 +228,12 @@ $fw-bold:               700;
             background: $cta-success-dark;
             border-bottom: 2px solid $cta-success;
         }
+
+        &:disabled {
+            background: $bck-icons;
+            border-bottom: 2px solid $black;
+            cursor: no-drop;
+        }
     }
 }
 
@@ -361,5 +367,27 @@ $fw-bold:               700;
                 }
             }
         }
+    }
+}
+
+
+.msg {
+    display: none;
+    margin: 0 -15px;
+    min-height: 204px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    text-align: center;
+
+    &.msg-alert {
+        background: $cta-alert;
+        color: $white;
+    }
+    &.msg-success {
+        background: $cta-success;
+        color: $black;
     }
 }

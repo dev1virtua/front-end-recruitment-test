@@ -92,5 +92,31 @@
             cloneBaconImg();
         };
     }
+    /**
+     * TASK 3
+     * @return {boolean}
+     */
+    function validationForm() {
+        if (document.querySelector('.validate').value === '') {
+            // alert('error');
+            document.querySelector('.msg-alert').style.display = 'flex';
+            return false;
+        } else {
+            // alert('success');
+            document.querySelector('.msg-success').style.display = 'flex';
+            document.querySelector('.btn-checkout').disabled = true;
+            return true;
+        }
+    }
+    /**
+     *
+     * TASK 3 init
+     */
+    if (document.getElementById('form_js')) {
+        const formJs = document.getElementById('form_js');
+        formJs.addEventListener('submit', function(event) {
+            event.preventDefault();
+            validationForm();
+        });
+    }
 })();
-
