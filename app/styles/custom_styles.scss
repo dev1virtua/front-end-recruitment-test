@@ -1,0 +1,365 @@
+// -- Base colors
+$white:                 #ffffff;
+$black:                 #000000;
+
+
+// -- Fonts colors
+$txt-dark:              #3b3b3b;
+$txt-inpt:              #b3b3ab;
+
+$cta-success:           #6bd400;
+$cta-success-dark:      #5db603;
+
+
+// -- Layouts
+$bck-light:             #f2f2f2;
+$bck-icons:             #484848;
+$border-primary:        #d9d9d9;
+
+
+// -- Fonts Weight
+$fw-bold:               700;
+
+
+
+
+
+
+// -- Animations
+@mixin transition-fast {
+    transition: all .5s ease 0ms;
+}
+
+// -- Grid
+* {
+    box-sizing: border-box;
+
+    &:after,
+    &:before {
+        box-sizing: inherit;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+}
+.col {
+    padding: 0 5px 20px;
+}
+.col-6 {
+    flex: 0 1 50%;
+
+    @media (max-width: 767px) {
+        flex: 0 1 100%;
+    }
+}
+.col-12 {
+    flex: 0 1 100%;
+}
+
+
+// -- Typo
+@mixin optional-at-root($sel) {
+    @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+        @content;
+    }
+}
+
+@mixin placeholder {
+    @include optional-at-root('::-webkit-input-placeholder') {
+        @content;
+    }
+    @include optional-at-root(':-moz-placeholder') {
+        @content;
+    }
+    @include optional-at-root('::-moz-placeholder') {
+        @content;
+    }
+    @include optional-at-root(':-ms-input-placeholder') {
+        @content;
+    }
+}
+
+
+
+
+
+
+.bgc-light {
+    background: $bck-light;
+}
+
+.content {
+    max-width: 890px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+
+// -- Form
+.custom-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 0 -15px;
+
+    > form {
+        flex: 1;
+        padding: 0 15px;
+    }
+
+    .summary {
+        flex: 0 1 280px;
+        padding: 0 15px;
+
+        @media (max-width: 767px) {
+            flex: 0 1 100%;
+        }
+    }
+}
+
+
+.title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: $fw-bold;
+    color: $black;
+    text-transform: uppercase;
+}
+
+.step {
+    margin: 0 0 20px;
+
+    header {
+        display: flex;
+        align-items: center;
+        margin: 0 0 15px;
+
+        .step-number {
+            margin: 0 10px 0 0;
+            min-width: 18px;
+            height: 18px;
+            background: $black;
+            border-radius: 50%;
+            font-size: 10px;
+            color: $white;
+            text-align: center;
+        }
+
+        i {
+            padding: 0 0 2px 8px;
+            font-size: 12px;
+            color: $bck-icons;
+        }
+    }
+
+    .field {
+        margin: 0 0 0 28px;
+    }
+
+
+    .custom-select {
+        position: relative;
+        font-family: 'Material Icons';
+
+        &:after {
+            content: 'expand_more';
+            position: absolute;
+            top: 4px;
+            right: 0;
+            transform: translate(0, -50%);
+            font-size: 18px;
+            color: $black;
+            pointer-events: none;
+        }
+
+        select {
+            width: 100%;
+            padding: 0 10px 0 0;
+            font-size: 16px;
+            color: $black;
+            background-color: $white;
+            border: 0;
+            border-radius: 0;
+            appearance: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+    }
+
+
+    .btn {
+        cursor: pointer;
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+
+        i {
+            padding: 0 10px 0 0;
+            font-size: 20px;
+        }
+    }
+
+    .btn-checkout {
+        @include transition-fast;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 15px;
+        color: $white;
+        font-size: 14px;
+        text-transform: uppercase;
+        border-radius: 3px;
+        background: $cta-success;
+        border-bottom: 2px solid $cta-success-dark;
+
+        &:hover {
+            background: $cta-success-dark;
+            border-bottom: 2px solid $cta-success;
+        }
+    }
+}
+
+.box {
+    @include transition-fast;
+    background: $white;
+    padding: 5px 8px 7px;
+    border-radius: 3px;
+    border-bottom: 2px solid $border-primary;
+
+    label {
+        display: block;
+        font-size: 12px;
+        font-weight: $fw-bold;
+        color: $txt-dark;
+    }
+    input {
+        width: 100%;
+        padding: 0;
+        font-size: 16px;
+        color: $black;
+        border: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        @include placeholder {
+            color: $txt-inpt;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.75);
+    }
+
+
+    &.field-card {
+        position: relative;
+
+        input {
+            padding: 0 60px 0 0;
+        }
+
+        .card {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 15px;
+            border-radius: 3px;
+            border: 1px solid $border-primary;
+        }
+    }
+
+    &.field-security {
+        position: relative;
+
+        input {
+            padding: 0 40px 0 0;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translate(0, -50%);
+            color: $txt-inpt;
+            font-size: 22px;
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+
+// -- Summary
+.summary {
+    margin: 33px 0 0;
+    background: $white;
+    border-radius: 3px;
+    border-bottom: 2px solid $border-primary;
+
+    .inner {
+        padding: 10px 14px 20px;
+        margin: 5px -10px;
+        border-radius: 3px;
+        border: 1px dotted $border-primary;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 -10px 15px;
+            line-height: normal;
+
+            span {
+                padding: 0 10px;
+                font-size: 12px;
+                color: $black;
+            }
+        }
+    }
+
+    .items {
+        border-bottom: 2px dotted $border-primary;
+        padding-bottom: 10px;
+        margin: 18px 0 0;
+    }
+    .totals {
+        margin: 15px 0 0;
+        overflow: hidden;
+
+        li {
+            &:last-child {
+                border-top: 2px dotted $border-primary;
+                margin-top: 10px;
+                padding-top: 15px;
+
+                span {
+                    font-weight: $fw-bold;
+                }
+
+                .price {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
